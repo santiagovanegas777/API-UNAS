@@ -1,0 +1,54 @@
+//Muestra todos los usuarios que hay en la DB
+GET http://localhost:3001/users/
+Content-Type: application/json
+###
+
+// Muestra un usuario según su _id
+GET http://localhost:3001/users/id/646bf90aaa99c8ee99f17e57
+Content-Type: application/json
+
+// Muestra el email del usuario al mandar su nombre por la URL
+###
+GET http://localhost:3001/users/email/carlosgonzalo@gmail.com
+Content-Type: application/json
+###
+
+// Crea un nuevo usuario en la base de datos 
+POST http://localhost:3001/users
+Content-Type: application/json
+
+{
+        "email": "martarey@gmail.com",
+        "password": "abcde",
+        "userName": "Marta",
+        "userLastname": "Rey",
+        "adress": "Paseo Zorrilla 145 6B Valladolid",
+        "fruits": []
+}
+###
+
+// Modifica un usuario en la DB mandando id en la URL y nuevos valores en el body
+PUT http://localhost:3001/users/646d40c3a01f082a38cfd93f
+Content-Type: application/json
+
+{
+        "email": "martarey@gmail.com",
+        "password": "abcde",
+        "userName": "Marta",
+        "userLastname": "Rey",
+        "adress": "Paseo Zorrilla 162 4B Valladolid",
+        "fruits": []
+}
+
+###
+
+// Elimina un usuario de la base de datos mandando id en la URL
+DELETE http://localhost:3001/users/646d40c3a01f082a38cfd93f
+Content-Type: application/json
+###
+
+
+// Añade una fruta a un usuario
+
+GET http://localhost:3001/users/addfruit?iduser=646bf90aaa99c8ee99f17e57&idfruit=646bf8f9f3131ff73914937b
+Content-Type: application/json
