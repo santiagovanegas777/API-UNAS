@@ -4,8 +4,36 @@ const Estilo = require('../models/estilo.model.js')
 // Devuelve todas las actividades
 const getAllEstilos = async (req, res) => {
     try{
-        const allEstilos = await Estilo.find()
-        return res.status(200).json(allEstilos);
+        // const allEstilos = await Estilo.find()
+        // return res.status(200).json(allEstilos);
+        const numCharacters = await Estilo.countDocuments();
+        let { page, limit } = req.query;
+        limit = limit ? parseInt(limit) : 3;
+        /*if (!isNaN(parseInt(page))) {
+          page = page ? parseInt(page) : 1;
+        } else {
+          page = 1;
+        }*/
+        page = !isNaN(parseInt(page)) ? (page ? parseInt(page) : 1) : 1;
+        let numPages = Math.ceil(numCharacters / limit);
+    
+        if (page > numPages) {
+          page = numPages;
+        }
+        if (page < 1) {
+          page = 1;
+        }
+        console.log(numPages, numCharacters);
+        const skip = (page - 1) * limit;
+        // descarto los elementos que no esten en la pagina indicada
+        const estilos = await Estilo.find().skip(skip).limit(limit);
+        return res.status(200).json({
+          estilos: estilos,
+          nextPage: numPages >= page + 1 ? `estilos/?page=${page + 1}` : null,
+          prevPage: page === 1 ? null : `estilos/?page=${page - 1}`,
+        });
+
+
     }catch(error){
         return res.status(500).json(error);
     }
