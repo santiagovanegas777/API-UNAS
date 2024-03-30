@@ -16,7 +16,7 @@ const router = express.Router();
 router.get('/', getAllEstilos);
 
 router.get('/id/:id', getEstilosId);
-router.get('/EstiloPrice/:EstiloName', getEstilosPrice);
+router.get('/estiloName/:estiloName', getEstilosPrice);
 
 // -----------------------------------------
 router.post('/', upload.single('estiloImg'), postEstilos);

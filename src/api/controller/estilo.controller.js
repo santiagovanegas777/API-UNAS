@@ -56,7 +56,7 @@ const getEstilosId = async (req, res) => {
 const getEstilosPrice = async (req, res) => {
     try{
         const {estiloName} = req.params; 
-        const getEstiloPrice = await Estilo.find({estiloName: estiloName},{_id:0, estiloPrice:1});
+        const getEstiloPrice = await Estilo.find({estiloName: estiloName});
         return res.status(200).json(getEstiloPrice);
     }catch(error){
         return res.status(500).json(error);
