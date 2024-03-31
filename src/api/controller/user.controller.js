@@ -143,9 +143,9 @@ const updateUser = async (req, res) => {
         putUser._id = id;
 
       
-        if (!validatePassword(putUser.password)) {
-          return res.status(400).json({ message: "Contraseña incorrecta" });
-        }
+        // if (!validatePassword(putUser.password)) {
+        //   return res.status(400).json({ message: "Contraseña incorrecta" });
+        // }
         if (!validateEmail(putUser.email)) {
           return res.status(400).json({ message: "Formato email incorrecto" });
         }
