@@ -28,7 +28,7 @@ const router = express.Router();
 //RUTAS DE PRUEBA------------------
 router.get('/pruebaAll/', getAllUsers);
 router.get('/pruebaEmail/:email', getUserByName);
-router.put('/pruebaUpdate/:id', updateUser);
+// router.put('/pruebaUpdate/:id', updateUser);
 router.delete('/pruebaDelete/:id', deleteUser);
 //------------------------------------
 router.post('/login', loginUser);
