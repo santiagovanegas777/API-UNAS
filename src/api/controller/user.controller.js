@@ -56,7 +56,7 @@ const loginUser = async (req, res) => {
           .json({ message: "Email ya registrado. No se puede dar de alta" });
       }
       if ((await usedUserName(newUser.username)) > 0) {
-        //OJO: Esta función es asíncrona porque así está definida en el validators
+        //OJO: Esta función es asíncrona porque así está definida en el validators]]
         return res
           .status(400)
           .json({ message: "Username ya registrado. No se puede dar de alta" });
@@ -95,11 +95,11 @@ const loginUser = async (req, res) => {
 const getAllUsers = async (req, res) => {
     try{
         const allUsers = await User.find()
-        .populate({
-        path: "destinations", select:"destinationPlace"
-        },{
-          path: "activities", select:"activityName"
-          }); // .find({_id: id}) es lo mismo que .findById(id);
+        // .populate({
+        // path: "destinations", select:"destinationPlace"
+        // },{
+        //   path: "activities", select:"activityName"
+        //   }); // .find({_id: id}) es lo mismo que .findById(id);
         return res.status(200).json(allUsers);
     }catch(error){
         return res.status(500).json(error);
